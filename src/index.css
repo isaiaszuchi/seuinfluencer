@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@fontsource/outfit/400.css';
+@import '@fontsource/outfit/500.css';
+@import '@fontsource/outfit/600.css';
+@import '@fontsource/outfit/700.css';
+@import '@fontsource/outfit/800.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@layer base {
+  :root {
+    /* Light mode as default - more institutional */
+    --background: 0 0% 100%;
+    --foreground: 275 50% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 275 50% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 275 50% 15%;
+
+    /* Orange/Gold accent - #fda332 */
+    --primary: 33 98% 59%;
+    --primary-foreground: 275 80% 7%;
+
+    /* Light secondary */
+    --secondary: 275 15% 95%;
+    --secondary-foreground: 275 50% 20%;
+
+    --muted: 275 10% 90%;
+    --muted-foreground: 275 20% 45%;
+
+    /* Purple/Magenta accent - #c257d2 */
+    --accent: 292 56% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 275 15% 88%;
+    --input: 275 15% 92%;
+    --ring: 33 98% 59%;
+
+    --radius: 0.75rem;
+
+    /* Dark purple for hero sections - #11031F */
+    --dark-bg: 275 80% 7%;
+    --dark-card: 275 60% 12%;
+    --dark-border: 275 40% 25%;
+
+    /* Custom gradients - Orange to Purple */
+    --gradient-primary: linear-gradient(135deg, hsl(33 98% 59%) 0%, hsl(292 56% 58%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(292 56% 58%) 0%, hsl(320 70% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(275 80% 7%) 0%, hsl(275 70% 12%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(275 60% 12%) 0%, hsl(275 70% 8%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(275 80% 7%) 0%, hsl(292 40% 15%) 50%, hsl(275 80% 7%) 100%);
+
+    /* Glow effects */
+    --glow-primary: 0 0 40px hsl(33 98% 59% / 0.4);
+    --glow-accent: 0 0 40px hsl(292 56% 58% / 0.4);
+    --glow-soft: 0 0 80px hsl(292 56% 58% / 0.2);
+    --glow-orange: 0 0 60px hsl(33 98% 59% / 0.3);
+
+    /* Shadows */
+    --shadow-elevated: 0 20px 50px -12px hsl(275 100% 5% / 0.15);
+    --shadow-card: 0 4px 24px -4px hsl(275 100% 5% / 0.1);
+
+    /* Success green for CTAs */
+    --success: 145 70% 42%;
+    --success-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-dark {
+    background-image: var(--gradient-dark);
+  }
+
+  .bg-gradient-card {
+    background-image: var(--gradient-card);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .glow-soft {
+    box-shadow: var(--glow-soft);
+  }
+
+  .glow-orange {
+    box-shadow: var(--glow-orange);
+  }
+
+  /* Dark section styling */
+  .section-dark {
+    background: hsl(var(--dark-bg));
+    color: hsl(0 0% 98%);
+  }
+
+  .section-dark .text-foreground {
+    color: hsl(0 0% 98%);
+  }
+
+  .section-dark .text-muted-foreground {
+    color: hsl(275 20% 70%);
+  }
+
+  /* Light section styling */
+  .section-light {
+    background: hsl(var(--background));
+  }
+
+  .section-alt {
+    background: hsl(275 15% 97%);
+  }
+
+  .card-neon {
+    @apply relative overflow-hidden rounded-2xl;
+    background: linear-gradient(145deg, hsl(275 60% 12%) 0%, hsl(275 70% 8%) 100%);
+    border: 1px solid hsl(275 40% 25%);
+  }
+
+  .card-neon::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl opacity-30 transition-opacity duration-300;
+    background: linear-gradient(145deg, hsl(33 98% 59% / 0.15) 0%, hsl(292 56% 58% / 0.1) 50%, transparent 100%);
+  }
+
+  .card-neon:hover::before {
+    @apply opacity-60;
+  }
+
+  .card-neon:hover {
+    border-color: hsl(33 98% 59% / 0.4);
+    box-shadow: 0 0 30px hsl(33 98% 59% / 0.15);
+  }
+
+  /* Light card style */
+  .card-light {
+    @apply relative overflow-hidden rounded-2xl bg-white border border-border/50 shadow-sm;
+    transition: all 0.3s ease;
+  }
+
+  .card-light:hover {
+    @apply shadow-lg border-primary/20;
+    transform: translateY(-2px);
+  }
+
+  .border-gradient {
+    @apply relative;
+    background: linear-gradient(145deg, hsl(33 98% 59% / 0.5) 0%, hsl(292 56% 58% / 0.3) 100%);
+    padding: 1px;
+    border-radius: var(--radius);
+  }
+
+  .border-gradient>* {
+    @apply bg-card rounded-[calc(var(--radius)-1px)];
+  }
+
+  .section-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  /* CTA Button Success Style */
+  .btn-success {
+    @apply font-semibold uppercase tracking-wide;
+    background: hsl(var(--success));
+    color: hsl(var(--success-foreground));
+    box-shadow: 0 4px 20px hsl(145 70% 42% / 0.4);
+  }
+
+  .btn-success:hover {
+    background: hsl(145 70% 47%);
+    box-shadow: 0 6px 30px hsl(145 70% 42% / 0.5);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .animate-counter {
+    animation: counter-up 2s ease-out forwards;
+  }
+
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: var(--glow-primary);
+    }
+
+    50% {
+      box-shadow: 0 0 60px hsl(33 98% 59% / 0.6);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes counter-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
