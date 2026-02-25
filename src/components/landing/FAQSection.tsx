@@ -44,12 +44,12 @@ export function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-8 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20">
             FAQ
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-foreground">
             Ainda Tem <span className="text-gradient">Dúvidas?</span>
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -69,23 +69,21 @@ export function FAQSection() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full text-left py-5 border-b border-border group"
+                className="w-full text-left py-3 md:py-5 border-b border-border group"
               >
                 <div className="flex items-center justify-between gap-4">
-                  <h3 className="font-display font-semibold text-lg group-hover:text-primary transition-colors text-foreground">
+                  <h3 className="font-display font-semibold text-base md:text-lg group-hover:text-primary transition-colors text-foreground">
                     {faq.question}
                   </h3>
                   <ChevronDown
-                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
+                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                      }`}
                   />
                 </div>
-                
+
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === index ? "max-h-96 mt-4" : "max-h-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96 mt-2 md:mt-4" : "max-h-0"
+                    }`}
                 >
                   <p className="text-muted-foreground leading-relaxed">
                     {faq.answer}
