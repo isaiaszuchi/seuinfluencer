@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import gifCriandoCampanha from "@/assets/criando-campanha.gif";
-import gifAprovandoCreator from "@/assets/aprovando-creator.gif";
-import gifCrm from "@/assets/crm.gif";
+const gifCriandoCampanha = "https://isaiaszuchi.com/gifs/criando-campanha.gif";
+const gifAprovandoCreator = "https://isaiaszuchi.com/gifs/aprovando-creator.gif";
+const gifCrm = "https://isaiaszuchi.com/gifs/crm.gif";
 
 
 const features = [
