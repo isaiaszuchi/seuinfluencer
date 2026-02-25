@@ -58,15 +58,15 @@ export function FAQSection() {
         </motion.div>
 
         {/* FAQ List */}
-        <div className="max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="max-w-3xl mx-auto"
+        >
           {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
+            <div key={index}>
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full text-left py-3 md:py-5 border-b border-border group"
@@ -90,9 +90,9 @@ export function FAQSection() {
                   </p>
                 </div>
               </button>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
